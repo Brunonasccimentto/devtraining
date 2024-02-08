@@ -1,11 +1,10 @@
-import { Student } from '../../src/model/student';
-import Status from '../../src/enums/status'; 
+import { Student } from "../../src/model/student";
+import Status from "../../src/enums/status";
 
-const student = new Student()
+const student = new Student();
 
-describe('calculateAverage', () => {
-  it('should return student average', () => {
-
+describe("calculateAverage", () => {
+  it("should return student average", () => {
     expect(student.calculateAverage(50, 50, 50)).toBe(5.0);
     expect(student.calculateAverage(91, 88, 92)).toBe(9.0);
     expect(student.calculateAverage(0, 0, 0)).toBe(0);
@@ -13,7 +12,7 @@ describe('calculateAverage', () => {
   });
 });
 
-describe('stundentStatus', () => {
+describe("stundentStatus", () => {
   it("should return the student's status correctly", () => {
     expect(student.stundentStatus(4)).toBe(Status.Failed);
     expect(student.stundentStatus(6)).toBe(Status.FinalExam);
@@ -21,7 +20,7 @@ describe('stundentStatus', () => {
   });
 });
 
-describe('checkAbsenceStatus', () => {
+describe("checkAbsenceStatus", () => {
   it("should return the student's absence status", () => {
     expect(student.checkAbsenceStatus(5, 20)).toBe(Status.Default);
     expect(student.checkAbsenceStatus(8, 35)).toBe(Status.Default);
@@ -30,8 +29,8 @@ describe('checkAbsenceStatus', () => {
   });
 });
 
-describe('finalExamScoreForApproval', () => {
-  it('should correctly return the final exam score to pass', () => {
+describe("finalExamScoreForApproval", () => {
+  it("should correctly return the final exam score to pass", () => {
     expect(student.finalExamScoreForApproval(4)).toBe(6);
     expect(student.finalExamScoreForApproval(6.2)).toBe(4);
     expect(student.finalExamScoreForApproval(5.7)).toBe(5);

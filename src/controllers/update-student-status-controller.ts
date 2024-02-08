@@ -5,7 +5,6 @@ import { Student } from "../model/student";
 
 export class UpdateStudentStatusController {
   async updateData(request: Request, response: Response): Promise<Response> {
-    
     const googleSheetsRepository = new GoogleSheetsRepository(process.env.SPREADSHEET_ID!);
     const lessons = await googleSheetsRepository.getClassLessons();
     const studentsAbsence = await googleSheetsRepository.getStudentsAbsences();
@@ -13,7 +12,6 @@ export class UpdateStudentStatusController {
     const student = new Student();
 
     try {
-      
       const studentsReprovedByAbsence: number[] = studentsAbsence!.flatMap(
         (element, index) => {
           const status = student.checkAbsenceStatus(element, lessons!);
@@ -23,7 +21,9 @@ export class UpdateStudentStatusController {
 
       const studentsStatus: Status[][] = StudentsExams!.map((element) => {
         const [p1, p2, p3] = element;
-        const status = student.stundentStatus(student.calculateAverage(p1, p2, p3));
+        const status = student.stundentStatus(
+          student.calculateAverage(p1, p2, p3),
+        );
         return [status];
       });
 
@@ -43,13 +43,17 @@ export class UpdateStudentStatusController {
         StudentsExams!.map((element, index) => {
           const [p1, p2, p3] = element;
           return studentsInFinalExam[index] == true
-            ? [student.finalExamScoreForApproval(student.calculateAverage(p1, p2, p3))]
+            ? [
+                student.finalExamScoreForApproval(
+                  student.calculateAverage(p1, p2, p3),
+                ),
+              ]
             : [Status.Default];
         });
 
       Promise.all([
         await googleSheetsRepository.updateStudentsStatus(finalStudentStatus),
-        await googleSheetsRepository.updateFinalMarkExam(calculateStudentsExamFinalScoreToPass),
+        await googleSheetsRepository.updateFinalExamScoreToPass(calculateStudentsExamFinalScoreToPass),
       ]);
 
       return response

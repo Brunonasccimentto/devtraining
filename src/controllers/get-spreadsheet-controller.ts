@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { GoogleSheetsRepository } from "../repositories/googleSheetsRepository";
 
-export class GetTableController {
+export class GetSpreadsheetController {
   async getData(request: Request, response: Response): Promise<Response> {
     const googleSheetsRepository = new GoogleSheetsRepository(
       process.env.SPREADSHEET_ID!,

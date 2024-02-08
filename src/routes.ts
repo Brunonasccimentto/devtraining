@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import { UpdateStudentStatusController } from './controllers/update-student-status-controller';
-import { GetTableController } from './controllers/get-table-controller';
+import { Router } from "express";
+import { UpdateStudentStatusController } from "./controllers/update-student-status-controller";
+import { GetSpreadsheetController } from "./controllers/get-spreadsheet-controller";
 
 const routes = Router();
 const updateStudentStatusController = new UpdateStudentStatusController();
-const getTableController = new GetTableController();
+const getSpreadsheetController = new GetSpreadsheetController();
 
-routes.post('/student/status', updateStudentStatusController.updateData);
-routes.get('/table', getTableController.getData);
+routes.post("/student/status", updateStudentStatusController.updateData);
+routes.get("/table", getSpreadsheetController.getData);
 
 export { routes };
