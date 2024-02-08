@@ -14,7 +14,7 @@ $ cp .env.example .env
 ```
 4. Make any necessary google cloud settings below.
 
-5.Start the application:
+5. Start the application:
 ```bash
 $ npm run start:dev
 ```
