@@ -7,6 +7,6 @@ const updateStudentStatusController = new UpdateStudentStatusController();
 const getSpreadsheetController = new GetSpreadsheetController();
 
 routes.post("/student/status", updateStudentStatusController.updateData);
-routes.get("/table", getSpreadsheetController.getData);
+routes.get("/spreadsheet", getSpreadsheetController.getData);
 
 export { routes };
