@@ -1,20 +1,26 @@
 # Dev Training
+### Setup
+Required node 20.5.0 or higher
 ### Installation
 1. Clone the repository:
 ```bash
 $ git clone https://github.com/Brunonasccimentto/devtraining.git
 ```
-2. Install the necessary dependencies:
+2. Go to the project folder:
+```bash
+$ cd devtraining
+```
+3. Install the necessary dependencies:
 ```bash
 $ npm install
 ```
-3. Clone the `.env.example` file:
+4. Clone the `.env.example` file:
 ```bash
 $ cp .env.example .env
 ```
-4. Make any necessary google cloud settings below.
+5. Make any necessary google cloud settings below.
 
-5. Start the application:
+6. Start the application:
 ```bash
 $ npm run start:dev
 ```
